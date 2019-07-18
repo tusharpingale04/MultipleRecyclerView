@@ -8,29 +8,29 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private var adapterDataList = ArrayList<Model>()
+    private var adapterDataList = ArrayList<Any>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_BLUE))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_GREEN))
-        adapterDataList.add(Model(MultiAdapter.TYPE_GREEN))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_BLUE))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_GREEN))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_BLUE))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_GREEN))
-        adapterDataList.add(Model(MultiAdapter.TYPE_GREEN))
-        adapterDataList.add(Model(MultiAdapter.TYPE_RED))
-        adapterDataList.add(Model(MultiAdapter.TYPE_BLUE))
+        adapterDataList.add(RedModel())
+        adapterDataList.add(BlueModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(GreenModel())
+        adapterDataList.add(GreenModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(BlueModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(GreenModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(BlueModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(GreenModel())
+        adapterDataList.add(GreenModel())
+        adapterDataList.add(RedModel())
+        adapterDataList.add(BlueModel())
 
         val layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv_multi_type.layoutManager = layoutManager

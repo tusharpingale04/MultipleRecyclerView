@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MultiAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    private var adapterDataList = ArrayList<Model>()
+    private var adapterDataList = ArrayList<Any>()
 
     companion object {
         const val TYPE_RED = 0
@@ -43,48 +43,48 @@ class MultiAdapter : RecyclerView.Adapter<BaseViewHolder<*>>() {
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
         val element = adapterDataList[position]
         when (holder) {
-            is RedViewHolder -> holder.bind(element)
-            is BlueViewHolder -> holder.bind(element)
-            is GreenViewHolder -> holder.bind(element)
+            is RedViewHolder -> holder.bind(element as RedModel)
+            is BlueViewHolder -> holder.bind(element as BlueModel)
+            is GreenViewHolder -> holder.bind(element as GreenModel)
             else -> throw IllegalArgumentException()
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        val comparable = adapterDataList[position].type
+        val comparable = adapterDataList[position]
         return when (comparable) {
-            0 -> TYPE_RED
-            1 -> TYPE_BLUE
-            2 -> TYPE_GREEN
+            is RedModel -> TYPE_RED
+            is BlueModel -> TYPE_BLUE
+            is GreenModel -> TYPE_GREEN
             else -> throw IllegalArgumentException("Invalid type of data " + position)
         }
     }
 
     //----------------RedViewHolder-------------------------
-    inner class RedViewHolder(itemView: View) : BaseViewHolder<Model>(itemView) {
+    inner class RedViewHolder(itemView: View) : BaseViewHolder<RedModel>(itemView) {
 
-        override fun bind(item: Model) {
+        override fun bind(item: RedModel) {
             //Do your view assignment here from the data model
         }
     }
 
     //----------------BlueViewHolder--------------------------
-    inner class BlueViewHolder(itemView: View) : BaseViewHolder<Model>(itemView) {
+    inner class BlueViewHolder(itemView: View) : BaseViewHolder<BlueModel>(itemView) {
 
-        override fun bind(item: Model) {
+        override fun bind(item: BlueModel) {
             //Do your view assignment here from the data model
         }
     }
 
     //----------------GreenViewHolder--------------------
-    inner class GreenViewHolder(itemView: View) : BaseViewHolder<Model>(itemView) {
+    inner class GreenViewHolder(itemView: View) : BaseViewHolder<GreenModel>(itemView) {
 
-        override fun bind(item: Model) {
+        override fun bind(item: GreenModel) {
             //Do your view assignment here from the data model
         }
     }
 
-    fun setData(models: ArrayList<Model>) {
+    fun setData(models: ArrayList<Any>) {
         adapterDataList = models
         notifyDataSetChanged()
     }
